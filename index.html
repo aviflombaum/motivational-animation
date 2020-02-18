@@ -21,6 +21,10 @@
   }
   ul.messages li{
     display: none;
+    top: 34%;
+    position: absolute;
+    text-align: center;
+    width: 90%;
   }
   </style>
   <script>
@@ -34,7 +38,7 @@
         if (counter == document.querySelectorAll("ul.messages li").length-1) {
           setTimeout(AnimatePhrases, 1000)
         }
-      }, 2000)
+      }, 4000)
     };
 
     function AnimatePhrases(){
@@ -48,7 +52,7 @@
         setTimeout(function(){
           AnimatePhrase(phrase, i)
         }, delay)
-        delay = delay + 3000        
+        delay = delay + 5000        
       })
     }
     
@@ -60,10 +64,11 @@
 </head>
 <body>
   <ul class="messages">
-    <li>Hello World</li>
-    <li>Goodbye World</li>
-    <li>Hello World</li>
-    <li>Goodbye World</li>
+    <li>You are already everything you've ever wanted to be.</li>
+    <li>Work hard, be nice, stay positive, and have faith.</li>
+    <li>The only way out is forward.</li>
+    <li>Your problem isn't the problem, your problem is your attitude about the problem.</li>
+    <li>The only way to never have to start again is to never stop.</li>    
   </ul>
 </body>
 </html>
