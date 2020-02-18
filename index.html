@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- https://github.com/daneden/animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+  <style>
+  body {
+    background: #8edbff;
+  }
+  ul.messages{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    list-style-type: none;
+    font-size: 4em;
+    color: #e7e9e5;
+    font-weight: bold;
+  }
+  ul.messages li{
+    display: none;
+  }
+  </style>
+  <script>
+    function AnimatePhrase(phrase, counter){
+      phrase.style.display = "block"
+      phrase.classList.add("animated")
+      phrase.classList.add("bounceIn")
+      setTimeout(function(){
+        phrase.classList.remove("bounceIn")
+        phrase.classList.add("bounceOut")
+        if (counter == document.querySelectorAll("ul.messages li").length-1) {
+          setTimeout(AnimatePhrases, 1000)
+        }
+      }, 2000)
+    };
+
+    function AnimatePhrases(){
+      const phrases = document.querySelectorAll("ul.messages li")
+      let delay = 0
+      phrases.forEach(function(phrase, i){    
+        phrase.classList.remove("animated")
+        phrase.style.display = "none"
+        phrase.classList.remove("bounceOut")
+
+        setTimeout(function(){
+          AnimatePhrase(phrase, i)
+        }, delay)
+        delay = delay + 3000        
+      })
+    }
+    
+    document.addEventListener("DOMContentLoaded", function(event) { 
+      AnimatePhrases()
+    });
+
+  </script>
+</head>
+<body>
+  <ul class="messages">
+    <li>Hello World</li>
+    <li>Goodbye World</li>
+    <li>Hello World</li>
+    <li>Goodbye World</li>
+  </ul>
+</body>
+</html>
