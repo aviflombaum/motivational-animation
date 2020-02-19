@@ -11,6 +11,8 @@
   <style>
   body {
     background: #8edbff;
+    width: 90%;
+    overflow: hidden;
   }
   ul.messages{
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -30,11 +32,15 @@
   <script>
     function AnimatePhrase(phrase, counter){
       phrase.style.display = "block"
-      phrase.classList.add("animated")
-      phrase.classList.add("bounceIn")
+
       setTimeout(function(){
-        phrase.classList.remove("bounceIn")
-        phrase.classList.add("bounceOut")
+        const classes = phrase.classList
+        classes.forEach(function(c){
+          if (c.includes("In")){            
+            phrase.classList.remove(c)
+            phrase.classList.add(c.replace("In", "Out"))
+          }
+        })
         if (counter == document.querySelectorAll("ul.messages li").length-1) {
           setTimeout(AnimatePhrases, 1000)
         }
@@ -44,12 +50,17 @@
     function AnimatePhrases(){
       const phrases = document.querySelectorAll("ul.messages li")
       let delay = 0
-      phrases.forEach(function(phrase, i){    
-        phrase.classList.remove("animated")
-        phrase.style.display = "none"
-        phrase.classList.remove("bounceOut")
+      phrases.forEach(function(phrase, i){
+        // phrase.style.display = "none"
 
         setTimeout(function(){
+          const classes = phrase.classList
+          classes.forEach(function(c){
+            if (c.includes("Out")){            
+              phrase.classList.remove(c)
+              phrase.classList.add(c.replace("Out", "In"))
+            }
+          })          
           AnimatePhrase(phrase, i)
         }, delay)
         delay = delay + 5000        
@@ -64,11 +75,11 @@
 </head>
 <body>
   <ul class="messages">
-    <li>You are already everything you've ever wanted to be.</li>
-    <li>Work hard, be nice, stay positive, and have faith.</li>
-    <li>The only way out is forward.</li>
-    <li>Your problem isn't the problem, your problem is your attitude about the problem.</li>
-    <li>The only way to never have to start again is to never stop.</li>    
+    <li class="animated bounceIn">You are already everything you've ever wanted to be.</li>
+    <li class="animated rollIn">Work hard, be nice, stay positive, and have faith.</li>
+    <li class="animated fadeInLeftBig">The only way out is forward.</li>
+    <li class="animated zoomIn">Your problem isn't the problem, your problem is your attitude about the problem.</li>
+    <li class="animated rotateInDownRight">The only way to never have to start again is to never stop.</li>    
   </ul>
 </body>
 </html>
