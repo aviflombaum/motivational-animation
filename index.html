@@ -1,79 +1,22 @@
 <!doctype html>
 <html>
 <head>
-  <title></title>
-  <meta name="description" content="">
+  <title>We Believe in You</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
   <!-- https://github.com/daneden/animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link rel="stylesheet" href="styles/base.css">
 
+  <!-- EDITABLE -->
   <style>
-  body {
-    background: #8edbff;
-    width: 90%;
-    overflow: hidden;
-  }
-  ul.messages{
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    list-style-type: none;
-    font-size: 400%;
-    color: #e7e9e5;
-    font-weight: bold;
-  }
-  ul.messages li{
-    display: none;
-    top: 34%;
-    position: absolute;
-    text-align: center;
-    width: 90%;
-  }
+
   </style>
-  <script>
-    function AnimatePhrase(phrase, counter){
-      phrase.style.display = "block"
+  <!-- EDITABLE -->
 
-      setTimeout(function(){
-        const classes = phrase.classList
-        classes.forEach(function(c){
-          if (c.includes("In")){            
-            phrase.classList.remove(c)
-            phrase.classList.add(c.replace("In", "Out"))
-          }
-        })
-        if (counter == document.querySelectorAll("ul.messages li").length-1) {
-          setTimeout(AnimatePhrases, 1000)
-        }
-      }, 4000)
-    };
-
-    function AnimatePhrases(){
-      const phrases = document.querySelectorAll("ul.messages li")
-      let delay = 0
-      phrases.forEach(function(phrase, i){
-        // phrase.style.display = "none"
-
-        setTimeout(function(){
-          const classes = phrase.classList
-          classes.forEach(function(c){
-            if (c.includes("Out")){            
-              phrase.classList.remove(c)
-              phrase.classList.add(c.replace("Out", "In"))
-            }
-          })          
-          AnimatePhrase(phrase, i)
-        }, delay)
-        delay = delay + 5000        
-      })
-    }
-    
-    document.addEventListener("DOMContentLoaded", function(event) { 
-      AnimatePhrases()
-    });
-
-  </script>
 </head>
 <body>
+  
+  <!-- EDITABLE -->
   <ul class="messages">
     <li class="animated bounceIn">You are already everything you've ever wanted to be.</li>
     <li class="animated rollIn">Work hard, be nice, stay positive, and have faith.</li>
@@ -81,5 +24,21 @@
     <li class="animated zoomIn">Your problem isn't the problem, your problem is your attitude about the problem.</li>
     <li class="animated rotateInDownRight">The only way to never have to start again is to never stop.</li>    
   </ul>
+  <!-- EDITABLE -->
+
+  <!-- EDITABLE -->
+  <script>
+  // BONUS: Customize the timing of the messages
+  // by defining a variable showTime
+  // EXAMPLE:
+
+  // showTime = 2000
+
+  // By setting showTime to 2000 the animations
+  // will cycle faster.
+  </script>
+  <!-- EDITABLE -->
+
+  <script src="scripts/animation.js"></script>  
 </body>
 </html>
